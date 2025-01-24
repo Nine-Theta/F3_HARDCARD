@@ -13,6 +13,12 @@ public class PlayerController : MonoBehaviour
     private float _maxLookAngle = 50f;
 
     [SerializeField]
+    private float _maxShootingRange = 50f;
+
+    [SerializeField]
+    private LayerMask _shootingLayer;
+
+    [SerializeField]
     private Camera _playerCam;
 
     [SerializeField]
@@ -39,6 +45,21 @@ public class PlayerController : MonoBehaviour
     {
         if (!pContext.started)
             return;
+
+        Ray ray = _playerCam.ViewportPointToRay(new Vector3(.5f, .5f, 0));
+        Debug.DrawRay(_playerCam.transform.position, ray.direction*_maxShootingRange,  Color.red, 2f);
+
+        RaycastHit[] hits = Physics.RaycastAll(ray, _maxShootingRange, _shootingLayer.value);
+
+        foreach(RaycastHit hit in hits)
+        {
+            Debug.Log("I hit " + hit.transform.name);
+
+            if (hit.transform.tag == "Bubble")
+            {
+                hit.transform.GetComponent<BubbleBehaviour>().Pop();
+            }
+        }
     }
 
     public void OnLook(InputAction.CallbackContext pContext)
