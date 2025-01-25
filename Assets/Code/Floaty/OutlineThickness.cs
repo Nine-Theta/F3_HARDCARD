@@ -34,8 +34,10 @@ public class OutlineThickness : MonoBehaviour
     
     private void BubbleWasShot(BubbleShot shot)
     {
+        
         if (material != null)
         {
+            
             SetThickness(thickness);
         }
         if (arrow != null)
@@ -46,6 +48,8 @@ public class OutlineThickness : MonoBehaviour
 
     public void SetThickness(float value)
     {
-        material.SetFloat("OutlineThic", value);
+        Debug.Log("Changed thickness");
+        material.SetFloat("_OutlineThic", value);
+        Debug.Log(material.GetFloat("_OutlineThic"));
     }
 }

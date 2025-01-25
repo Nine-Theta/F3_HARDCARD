@@ -3,10 +3,9 @@ using UnityEngine;
 public class HumanReachesTop : MonoBehaviour
 {
     [SerializeField] LifeCounter lifeCounter;
-
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.transform.tag.Equals(Tags.T_Victim))
+        if(other.transform.tag.Equals(Tags.T_Victim))
         {
             lifeCounter.UpdateCounter();
         }

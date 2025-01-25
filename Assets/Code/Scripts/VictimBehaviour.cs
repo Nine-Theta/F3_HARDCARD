@@ -17,7 +17,9 @@ public class VictimBehaviour : MonoBehaviour
 
     [SerializeField] float heightForBuoy = 20f;
     [SerializeField] bool needsBuoy;
+    [SerializeField] Transform buoyPosition;
     float heightFlown;
+    Vector3 initialPos = new Vector3();
 
     private void OnEnable()
     {
@@ -40,13 +42,15 @@ public class VictimBehaviour : MonoBehaviour
     {
         _body = GetComponent<Rigidbody>();
         _collider = GetComponent<Collider>();
+        initialPos = this.transform.position;
     }
 
     [Button]
     public void Release()
     {
         _body.useGravity = true;
-        _collider.isTrigger = false;
+        _body.isKinematic = false;
+        //_collider.isTrigger = false;
 
         IsCaptured = false;
         _capturer = null;
@@ -68,20 +72,28 @@ public class VictimBehaviour : MonoBehaviour
             heightFlown = transform.position.y;
         }
     }
-
-    private void OnCollisionEnter(Collision collision)
+    void Hitwater()
     {
-        if(collision.transform.tag.Equals(Tags.T_Ground))
+        _body.useGravity = false;
+        this.transform.position = initialPos;
+        _body.isKinematic = true;
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.transform.tag.Equals(Tags.T_Ground))
         {
+            Hitwater();
+            Debug.Log("Hit water");
             if(needsBuoy)
             {
                 //Trigger death
             }
         }
 
-        if(collision.transform.tag.Equals(Tags.T_Floaty))
+        if(other.transform.tag.Equals(Tags.T_Floaty))
         {
-            //Do floaty things
+            other.transform.parent = buoyPosition;
+            other.transform.localPosition = new Vector3();
         }
     }
 }
