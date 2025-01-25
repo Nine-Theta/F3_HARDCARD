@@ -13,16 +13,13 @@ public class PlayerController : MonoBehaviour
     private float _maxLookAngle = 50f;
 
     [SerializeField]
-    private float _maxShootingRange = 50f;
-
-    [SerializeField]
-    private LayerMask _shootingLayer;
-
-    [SerializeField]
     private Camera _playerCam;
 
     [SerializeField]
     private Rigidbody _playerBody;
+
+    [SerializeField]
+    private GunBehaviour _gun;
 
     private Vector2 _moveInput = Vector2.zero;
     private Vector2 _lookInput = Vector2.zero;
@@ -46,20 +43,7 @@ public class PlayerController : MonoBehaviour
         if (!pContext.started)
             return;
 
-        Ray ray = _playerCam.ViewportPointToRay(new Vector3(.5f, .5f, 0));
-        Debug.DrawRay(_playerCam.transform.position, ray.direction*_maxShootingRange,  Color.red, 2f);
-
-        RaycastHit[] hits = Physics.RaycastAll(ray, _maxShootingRange, _shootingLayer.value);
-
-        foreach(RaycastHit hit in hits)
-        {
-            Debug.Log("I hit " + hit.transform.name);
-
-            if (hit.transform.tag == "Bubble")
-            {
-                hit.transform.GetComponent<BubbleBehaviour>().Pop();
-            }
-        }
+        _gun.FireGun();
     }
 
     public void OnLook(InputAction.CallbackContext pContext)
@@ -72,7 +56,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnToggleMouseLock(InputAction.CallbackContext pContext)
     {
-        if (!pContext.started) 
+        if (!pContext.started)
             return;
 
         if (_isMouseLocked)
@@ -101,7 +85,7 @@ public class PlayerController : MonoBehaviour
 
         _playerBody.AddTorque(rotation * _lookMult.x, ForceMode.Force);
 
-        _playerCam.transform.localRotation *=  Quaternion.AngleAxis(_lookInput.y * _lookMult.y, Vector3.right);
+        _playerCam.transform.localRotation *= Quaternion.AngleAxis(_lookInput.y * _lookMult.y, Vector3.right);
 
         //Dislike this, shitty cam clamp
         if (_playerCam.transform.localRotation.eulerAngles.x > _maxLookAngle && _playerCam.transform.localRotation.eulerAngles.x < 180)

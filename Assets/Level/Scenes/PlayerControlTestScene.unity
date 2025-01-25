@@ -119,6 +119,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &80843824 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 334559311913864121, guid: 8394d74ba1361724aba141449826084a, type: 3}
+  m_PrefabInstance: {fileID: 2171445101433822331}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f18210d8e37405e44b2030fa27763d8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &166085894
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,12 +619,9 @@ MonoBehaviour:
   _walkSpeedMult: 120
   _lookMult: {x: 0.25, y: -0.1}
   _maxLookAngle: 50
-  _maxShootingRange: 50
-  _shootingLayer:
-    serializedVersion: 2
-    m_Bits: 0
   _playerCam: {fileID: 1144554374}
   _playerBody: {fileID: 166085895}
+  _gun: {fileID: 0}
 --- !u!114 &1855406155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1042,6 +1050,63 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1001 &2171445101433822331
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6435992514534553602, guid: 8394d74ba1361724aba141449826084a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6435992514534553602, guid: 8394d74ba1361724aba141449826084a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6435992514534553602, guid: 8394d74ba1361724aba141449826084a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6435992514534553602, guid: 8394d74ba1361724aba141449826084a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6435992514534553602, guid: 8394d74ba1361724aba141449826084a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6435992514534553602, guid: 8394d74ba1361724aba141449826084a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6435992514534553602, guid: 8394d74ba1361724aba141449826084a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6435992514534553602, guid: 8394d74ba1361724aba141449826084a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6435992514534553602, guid: 8394d74ba1361724aba141449826084a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6435992514534553602, guid: 8394d74ba1361724aba141449826084a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7253815890902724264, guid: 8394d74ba1361724aba141449826084a, type: 3}
+      propertyPath: m_Name
+      value: WaterBullet
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8394d74ba1361724aba141449826084a, type: 3}
 --- !u!1001 &2771108826454736629
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1204,6 +1269,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6327645897392748922, guid: 60cb5535b1526af468c9b989087ac8cf, type: 3}
+      propertyPath: _bullet
+      value: 
+      objectReference: {fileID: 80843824}
     - target: {fileID: 6670857776178289906, guid: 60cb5535b1526af468c9b989087ac8cf, type: 3}
       propertyPath: m_Name
       value: PlayerPrefab
@@ -1224,3 +1293,4 @@ SceneRoots:
   - {fileID: 3616357474591138908}
   - {fileID: 3014683578061414000}
   - {fileID: 2771108826454736629}
+  - {fileID: 2171445101433822331}
