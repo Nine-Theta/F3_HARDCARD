@@ -11,7 +11,7 @@ public class PickUpAndThrow : MonoBehaviour
 
     private GameObject heldObject;        // Reference to the currently held object
 
-    private Vector3 screenCenter = new Vector3(0.5f,0.5f,0);
+    private Vector3 screenCenter = new Vector3(0.5f, 0.5f, 0);
     [SerializeField] float maxDistance = 20f;
     [SerializeField] LayerMask layerMask;
 
@@ -26,7 +26,7 @@ public class PickUpAndThrow : MonoBehaviour
     void Update()
     {
         Vector3 rayOrigin = cam.ViewportToWorldPoint(screenCenter);
-        
+
         Debug.DrawRay(rayOrigin, cam.transform.forward * 10, Color.yellow);
 
         if (Input.GetKeyDown(interactionKey)) // Pick up or drop the object
@@ -51,7 +51,7 @@ public class PickUpAndThrow : MonoBehaviour
             renderArch = true;
         }
 
-        if(renderArch)
+        if (renderArch)
         {
             CalculateArch();
         }
@@ -95,10 +95,12 @@ public class PickUpAndThrow : MonoBehaviour
             //Debug.Log("Ray send");
             if (hit.transform.tag.Equals(Tags.T_Floaty))
             {
-                    heldObject = hit.collider.gameObject;
-                    heldObject.GetComponent<Rigidbody>().isKinematic = true; // Disable physics
-                    heldObject.transform.position = holdPoint.position;     // Move to hold point
-                    heldObject.transform.parent = holdPoint;               // Parent to hold point
+                heldObject = hit.collider.gameObject;
+                heldObject.GetComponent<Rigidbody>().isKinematic = true; // Disable physics
+                heldObject.transform.position = holdPoint.position;     // Move to hold point
+                heldObject.transform.parent = holdPoint;               // Parent to hold point
+                
+                Bus.Sync.Publish(this, new BuoyPicked());
             }
         }
         // Raycast to detect object in front of the player
@@ -118,7 +120,7 @@ public class PickUpAndThrow : MonoBehaviour
         Rigidbody rb = heldObject.GetComponent<Rigidbody>();
         rb.isKinematic = false;                       // Enable physics
         heldObject.transform.parent = null;           // Unparent
-        Vector3 forceToAdd = cam.transform.forward * throwForce ;      // Throw in the player's look direction
+        Vector3 forceToAdd = cam.transform.forward * throwForce;      // Throw in the player's look direction
         rb.AddForce(forceToAdd, ForceMode.Impulse);
         heldObject = null;                            // Clear reference
     }

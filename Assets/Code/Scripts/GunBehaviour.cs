@@ -33,6 +33,7 @@ public class GunBehaviour : MonoBehaviour
             if (hit.transform.tag == "Bubble")
             {
                 hit.transform.GetComponent<BubbleBehaviour>().Pop();
+                Bus.Sync.Publish(this, new BubbleShot());
             }
         }
     }

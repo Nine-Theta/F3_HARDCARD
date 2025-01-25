@@ -10,6 +10,7 @@ public class StopWhenHit : MonoBehaviour
             rb.linearVelocity = Vector3.zero;    // Stop movement
             rb.angularVelocity = Vector3.zero;
             rb.isKinematic = true;
+            this.transform.rotation = Quaternion.Euler(0, 0, 90);
         }
     }
 }
