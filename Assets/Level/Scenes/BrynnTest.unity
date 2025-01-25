@@ -603,7 +603,7 @@ PrefabInstance:
     - target: {fileID: 1736465861867083629, guid: 8532ca56516da4a4cbb87d959b336380, type: 3}
       propertyPath: _strategy
       value: 
-      objectReference: {fileID: 11400000, guid: fb408c1ea8e175b4897db6f2fa073c6f, type: 2}
+      objectReference: {fileID: 11400000, guid: 5c370b1aa5885e24c9138f9d502974c3, type: 2}
     - target: {fileID: 1736465861867083629, guid: 8532ca56516da4a4cbb87d959b336380, type: 3}
       propertyPath: <HasVictim>k__BackingField
       value: 1

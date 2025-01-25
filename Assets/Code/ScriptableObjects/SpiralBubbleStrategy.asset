@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4cb76072c232bf4481c4b3b24489c0f, type: 3}
-  m_Name: FloatyZigZagBubbleStrategy
+  m_Script: {fileID: 11500000, guid: 29bd9efb93653c44a9acb18830bf043e, type: 3}
+  m_Name: SpiralBubbleStrategy
   m_EditorClassIdentifier: 
-  maxSwing: 1
+  maxRadius: 1
