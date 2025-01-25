@@ -30,6 +30,7 @@ public class BubbleBehaviour : MonoBehaviour
     public void Capture(VictimBehaviour pVictim)
     {
         CapturedVictim = pVictim;
+        HasVictim = true;
         pVictim.Capture(this);
     }
 

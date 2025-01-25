@@ -37,19 +37,24 @@ public class GameManager : MonoBehaviour
         yield return 1f;
         poolGuestSpawner = GetComponent<PoolGuestSpawner>();
         GuestsInPool = poolGuestSpawner.SpawnGuests(PoolGuests, PoolGuestCount, PoolGuestSpacing);
+        StartCoroutine(KidnapGuest());
     }
 
     private void Update()
     {
-        StartCoroutine(KidnapGuest());
     }
 
     private IEnumerator KidnapGuest()
     {
-        yield return Random.Range(5, 20);
+        for (int i = 0; i < GuestsInPool.Count; i++)
+        {
+            yield return new WaitForSeconds(Random.Range(5f, 20f));
 
-        // get random guest
-        int randomIndex = Random.Range(0, GuestsInPool.Count);
+            // get random guest
+            int randomIndex = Random.Range(0, GuestsInPool.Count);
+            GameObject newBubble = Instantiate(Bubble, GuestsInPool[randomIndex].transform.position, Quaternion.identity);
+            newBubble.GetComponent<BubbleBehaviour>().Capture(GuestsInPool[randomIndex].GetComponent<VictimBehaviour>());
+        }
 
         // Guest becomes bubbles (get component)
         // GameObject bubble = Instantiate(Bubble, GuestsInPool[randomIndex].transform.position, Quarternion.identity);
