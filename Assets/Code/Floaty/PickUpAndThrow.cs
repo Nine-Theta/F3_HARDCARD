@@ -34,7 +34,11 @@ public class PickUpAndThrow : MonoBehaviour
             if (heldObject == null)
                 TryPickup();
             else
+            {
                 DropObject();
+                renderArch = false;
+                lr.enabled = false;
+            }
         }
 
         if (Input.GetMouseButtonUp(0) && heldObject != null) // Throw the object
