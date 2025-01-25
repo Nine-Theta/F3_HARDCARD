@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PickUpAndThrow : MonoBehaviour
@@ -6,6 +7,7 @@ public class PickUpAndThrow : MonoBehaviour
     [SerializeField] Transform holdPoint;
 
     [SerializeField] float throwForce = 10f;        // Base throw force
+    Vector3 throwDirection = new Vector3(0, 1, 0);
 
     private GameObject heldObject;        // Reference to the currently held object
 
@@ -17,7 +19,8 @@ public class PickUpAndThrow : MonoBehaviour
 
     [SerializeField] Camera cam;
 
-    [SerializeField] LaunchArchRender LaunchArchRender;
+    //[SerializeField] LaunchArchRender LaunchArchRender;
+    [SerializeField] LineRenderer lr;
     private bool renderArch;
 
     void Update()
@@ -37,22 +40,42 @@ public class PickUpAndThrow : MonoBehaviour
         if (Input.GetMouseButtonUp(0) && heldObject != null) // Throw the object
         {
             ThrowObject();
-            LaunchArchRender.SetNeedsBasedOnThrow(cam.transform.forward, throwForce, 0);
-            LaunchArchRender.renderArch = false;
             renderArch = false;
+            lr.enabled = false;
         }
 
-        if (Input.GetMouseButtonDown(0) && heldObject != null)
+        if (Input.GetMouseButton(0) && heldObject != null)
         {
             Debug.Log("Rendering arch");
-            LaunchArchRender.renderArch = true;
+            lr.enabled = true;
             renderArch = true;
         }
 
         if(renderArch)
         {
-            LaunchArchRender.SetNeedsBasedOnThrow(cam.transform.forward, throwForce, 10);
+            CalculateArch();
         }
+    }
+
+    void CalculateArch()
+    {
+        Vector3 velocity = (cam.transform.forward).normalized * throwForce;
+
+        ShowTrajectory(holdPoint.position + holdPoint.forward, velocity);
+    }
+
+    private void ShowTrajectory(Vector3 origin, Vector3 velocity)
+    {
+        Vector3[] points = new Vector3[100];
+        lr.positionCount = points.Length;
+
+        for (int i = 0; i < points.Length; i++)
+        {
+            float t = i * 0.1f;
+            points[i] = origin + velocity * t + 0.5f * Physics.gravity * t * t;
+        }
+
+        lr.SetPositions(points);
     }
 
     void TryPickup()
