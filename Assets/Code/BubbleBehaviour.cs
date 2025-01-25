@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using UnityEngine;
 
 public class BubbleBehaviour : MonoBehaviour
@@ -11,9 +12,17 @@ public class BubbleBehaviour : MonoBehaviour
     [SerializeField]
     private bool _hasVictim;
 
+    [Button]
     public void Pop()
     {
         _capturedVictim.Release();
+        Destroy(gameObject);
+    }
+
+    public void Capture(VictimBehaviour pVictim)
+    {
+        _capturedVictim = pVictim;
+        pVictim.Capture(this);
     }
 
     private void FixedUpdate()
