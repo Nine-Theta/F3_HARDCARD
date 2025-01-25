@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "RiseUpBubbleStrategy", menuName = "ScriptableObjects/BubbleStrategies/RiseUpBubbleStrategy")]
+[CreateAssetMenu(fileName = "RiseUpBubbleStrategy", menuName = "ScriptableObjects/BubbleStrategies/RiseUp")]
 public class RiseUpBubbleStrategy : BubbleStrategyBase
 {
     public override void OnUpdate()
