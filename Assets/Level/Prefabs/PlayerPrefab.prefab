@@ -1,5 +1,37 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &589284560180224041
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1583262143922854366}
+  m_Layer: 0
+  m_Name: GunPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1583262143922854366
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589284560180224041}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.94, y: -0.98, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 698186075033195464}
+  m_Father: {fileID: 4549679470229599536}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1423566055960147230
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,7 +151,7 @@ Transform:
   m_Children:
   - {fileID: 1710972462893109791}
   - {fileID: 1786904744946278575}
-  - {fileID: 698186075033195464}
+  - {fileID: 1583262143922854366}
   m_Father: {fileID: 3092771031793220981}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &5764951100289711833
@@ -831,11 +863,11 @@ Transform:
   m_GameObject: {fileID: 7946432105823941108}
   serializedVersion: 2
   m_LocalRotation: {x: 0.66365755, y: -0.021271138, z: 0.018885398, w: 0.74749553}
-  m_LocalPosition: {x: 0.88, y: -0.85300004, z: 1.061}
-  m_LocalScale: {x: 0.40000007, y: 0.6000001, z: 0.40000007}
+  m_LocalPosition: {x: -0.060000002, y: 0.1270001, z: 1.0609999}
+  m_LocalScale: {x: 0.4000001, y: 0.6000001, z: 0.4000001}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4549679470229599536}
+  m_Father: {fileID: 1583262143922854366}
   m_LocalEulerAnglesHint: {x: 83.2, y: -3.26, z: 0}
 --- !u!33 &7550128435037149106
 MeshFilter:

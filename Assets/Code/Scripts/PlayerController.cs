@@ -83,7 +83,8 @@ public class PlayerController : MonoBehaviour
         Vector3 rotation = Vector3.zero;
         rotation.y = _lookInput.x;
 
-        _playerBody.AddTorque(rotation * _lookMult.x, ForceMode.Force);
+        //_playerBody.AddTorque(rotation * _lookMult.x, ForceMode.Force);
+        transform.parent.Rotate(Vector3.up, rotation.y *_lookMult.x);
 
         _playerCam.transform.localRotation *= Quaternion.AngleAxis(_lookInput.y * _lookMult.y, Vector3.right);
 
