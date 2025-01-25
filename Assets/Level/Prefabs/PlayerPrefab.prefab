@@ -294,6 +294,10 @@ MonoBehaviour:
   _walkSpeedMult: 120
   _lookMult: {x: 0.25, y: -0.1}
   _maxLookAngle: 50
+  _maxShootingRange: 50
+  _shootingLayer:
+    serializedVersion: 2
+    m_Bits: 384
   _playerCam: {fileID: 5764951100289711833}
   _playerBody: {fileID: 4673413980208512100}
 --- !u!114 &1230099375161622292
