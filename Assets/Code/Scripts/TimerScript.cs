@@ -1,12 +1,19 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using Rive;
+using Rive.Components;
+using UnityEditorInternal;
 
 public class Timer : MonoBehaviour
 {
     // Public variables for configuring the timer
     public float startTime = 60f; // Starting time (countdown starts from this value)
     public bool isCountdown = true; // Set to true for countdown, false for count up
-    public Text timerText; // UI Text element to display the timer
+    public TMP_Text timerText; // UI Text element to display the timer
+    [SerializeField] private RiveWidget m_riveWidget;
+
+    
 
     private float currentTime;
     private bool isRunning = true;
@@ -15,6 +22,7 @@ public class Timer : MonoBehaviour
     {
         // Initialize the timer
         currentTime = isCountdown ? startTime : 0f;
+        StartTimer();
     }
 
     void Update()
@@ -25,10 +33,17 @@ public class Timer : MonoBehaviour
             currentTime += isCountdown ? -Time.deltaTime : Time.deltaTime;
 
             // Stop the timer if countdown reaches zero
-            if (isCountdown && currentTime <= 0)
+
+            if (isCountdown && currentTime <= 30)
             {
-                currentTime = 0;
-                isRunning = false;
+                if (isCountdown && currentTime <= 0)
+                {
+                    StopTimer();
+                }
+                else
+                {
+                    timerAlarm();
+                }
             }
 
             // Update the timer display
@@ -50,12 +65,23 @@ public class Timer : MonoBehaviour
     public void StartTimer()
     {
         isRunning = true;
+
+        SMINumber someNumber = m_riveWidget.StateMachine.GetNumber("state");
+        if (someNumber == null) return;
+        someNumber.Value = 1;
     }
 
     // Optional: Method to stop the timer
     public void StopTimer()
     {
+        currentTime = 0;
         isRunning = false;
+
+        SMINumber someNumber = m_riveWidget.StateMachine.GetNumber("state");
+        if (someNumber == null) return;
+        someNumber.Value = 3;
+
+        timerText.color = new UnityEngine.Color(0, 1, 0);
     }
 
     // Optional: Method to reset the timer
@@ -63,5 +89,19 @@ public class Timer : MonoBehaviour
     {
         currentTime = isCountdown ? startTime : 0f;
         UpdateTimerText();
+
+        SMINumber someNumber = m_riveWidget.StateMachine.GetNumber("state");
+        if (someNumber == null) return;
+        someNumber.Value = 0;
+
+        timerText.color = new UnityEngine.Color(1, 0, 0);
+
+    }
+
+    public void timerAlarm()
+    {
+        SMINumber someNumber = m_riveWidget.StateMachine.GetNumber("state");
+        if (someNumber == null) return;
+        someNumber.Value = 2;
     }
 }
