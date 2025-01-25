@@ -48,8 +48,8 @@ public class OutlineThickness : MonoBehaviour
 
     public void SetThickness(float value)
     {
-        Debug.Log("Changed thickness");
+        //Debug.Log("Changed thickness");
         material.SetFloat("_OutlineThic", value);
-        Debug.Log(material.GetFloat("_OutlineThic"));
+        //Debug.Log(material.GetFloat("_OutlineThic"));
     }
 }

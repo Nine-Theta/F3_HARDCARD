@@ -39,7 +39,7 @@ public class GunBehaviour : MonoBehaviour
 
         foreach (RaycastHit hit in hits)
         {
-            Debug.Log("I hit " + hit.transform.name);
+            //Debug.Log("I hit " + hit.transform.name);
 
             if (hit.transform.tag == "Bubble")
             {

@@ -50,7 +50,7 @@ public class PickUpAndThrow : MonoBehaviour
 
         if (Input.GetMouseButton(0) && heldObject != null)
         {
-            Debug.Log("Rendering arch");
+            //Debug.Log("Rendering arch");
             lr.enabled = true;
             renderArch = true;
         }

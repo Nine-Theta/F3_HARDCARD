@@ -66,7 +66,7 @@ public class VictimBehaviour : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (IsCaptured)
+        if (_capturer != null && IsCaptured)
         {
             transform.position = _capturer.transform.position;
             heightFlown = transform.position.y;
