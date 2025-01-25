@@ -114,6 +114,7 @@ public class PickUpAndThrow : MonoBehaviour
 
     void ThrowObject()
     {
+        StartCoroutine(heldObject.GetComponent<SelfDestruct>().Countdown());
         Rigidbody rb = heldObject.GetComponent<Rigidbody>();
         rb.isKinematic = false;                       // Enable physics
         heldObject.transform.parent = null;           // Unparent

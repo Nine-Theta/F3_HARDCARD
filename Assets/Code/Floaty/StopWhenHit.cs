@@ -9,6 +9,7 @@ public class StopWhenHit : MonoBehaviour
             Rigidbody rb = this.GetComponent<Rigidbody>();
             rb.linearVelocity = Vector3.zero;    // Stop movement
             rb.angularVelocity = Vector3.zero;
+            rb.isKinematic = true;
         }
     }
 }
