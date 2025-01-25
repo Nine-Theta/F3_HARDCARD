@@ -9,7 +9,7 @@ public class FloatyZigZagBubbleStrategy : BubbleStrategyBase
     
     public override void OnUpdate()
     {
-        if(Bubble.HasVictim)
+        if(Bubble != null && Bubble.HasVictim)
         {
             float swingValue = Mathf.Sin(Time.time) * maxSwing;
 
