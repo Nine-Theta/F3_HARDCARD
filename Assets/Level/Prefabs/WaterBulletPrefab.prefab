@@ -95,8 +95,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4626029722279283787}
-  - component: {fileID: 4561580191674816579}
-  - component: {fileID: 5545365438513872125}
+  - component: {fileID: 3862544782014286271}
+  - component: {fileID: 2952601094476499691}
   m_Layer: 2
   m_Name: Particle Effect
   m_TagString: Untagged
@@ -119,7 +119,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6435992514534553602}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!2083052967 &4561580191674816579
+--- !u!2083052967 &3862544782014286271
 VisualEffect:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,7 +157,7 @@ VisualEffect:
       m_Array: []
     m_Bool:
       m_Array: []
---- !u!73398921 &5545365438513872125
+--- !u!73398921 &2952601094476499691
 VFXRenderer:
   serializedVersion: 1
   m_ObjectHideFlags: 0
