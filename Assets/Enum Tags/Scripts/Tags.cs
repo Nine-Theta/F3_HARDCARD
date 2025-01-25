@@ -10,4 +10,6 @@ public const string T_GameController = @"GameController";
 public const string T_CinemachineTarget = @"CinemachineTarget";
 public const string T_Floaty = @"Floaty";
 public const string T_Ground = @"Ground";
+public const string T_Bubble = @"Bubble";
+public const string T_Victim = @"Victim";
 }
