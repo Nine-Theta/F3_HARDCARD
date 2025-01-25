@@ -50,7 +50,7 @@ public class PickUpAndThrow : MonoBehaviour
 
         if (Input.GetMouseButton(0) && heldObject != null)
         {
-            Debug.Log("Rendering arch");
+            //Debug.Log("Rendering arch");
             lr.enabled = true;
             renderArch = true;
         }
@@ -105,6 +105,8 @@ public class PickUpAndThrow : MonoBehaviour
                 heldObject.transform.parent = holdPoint;               // Parent to hold point
                 
                 Bus.Sync.Publish(this, new BuoyPicked());
+
+                GetComponent<GunBehaviour>().ToggleHolsterGun();
             }
         }
         // Raycast to detect object in front of the player
@@ -116,6 +118,7 @@ public class PickUpAndThrow : MonoBehaviour
         heldObject.GetComponent<Rigidbody>().isKinematic = false; // Enable physics
         heldObject.transform.parent = null;                      // Unparent
         heldObject = null;                                       // Clear reference
+        GetComponent<GunBehaviour>().ToggleHolsterGun();
     }
 
     void ThrowObject()
@@ -127,5 +130,6 @@ public class PickUpAndThrow : MonoBehaviour
         Vector3 forceToAdd = cam.transform.forward * throwForce;      // Throw in the player's look direction
         rb.AddForce(forceToAdd, ForceMode.Impulse);
         heldObject = null;                            // Clear reference
+        GetComponent<GunBehaviour>().ToggleHolsterGun();
     }
 }
