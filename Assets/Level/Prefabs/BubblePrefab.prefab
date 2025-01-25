@@ -112,7 +112,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5499071652020390812}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c91befb3cd8c728459834eca41dbdac0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _floatSpeed: 0.05
-  _capturedVictim: {fileID: 0}
-  _hasVictim: 0
+  MoveSpeed: 0.05
+  <CapturedVictim>k__BackingField: {fileID: 0}
+  <HasVictim>k__BackingField: 0
+  _strategy: {fileID: 11400000, guid: 517ca86ae5199ae4ab234892775ebd9e, type: 2}

@@ -4,32 +4,42 @@ using UnityEngine;
 public class BubbleBehaviour : MonoBehaviour
 {
     [SerializeField]
-    private float _floatSpeed = 0.05f;
+     public float MoveSpeed = 0.05f;
+
+    [field: SerializeField]
+    public VictimBehaviour CapturedVictim { get; private set; }
+
+    [field: SerializeField]
+    public bool HasVictim { get; private set; }
 
     [SerializeField]
-    private VictimBehaviour _capturedVictim;
+    private BubbleStrategyBase _strategy;
 
-    [SerializeField]
-    private bool _hasVictim;
+    private void Start()
+    {
+        _strategy.OnStart(this);
+    }
 
     [Button]
     public void Pop()
     {
-        _capturedVictim.Release();
-        Destroy(gameObject);
+        CapturedVictim.Release();
+        _strategy.OnPop();
     }
 
     public void Capture(VictimBehaviour pVictim)
     {
-        _capturedVictim = pVictim;
+        CapturedVictim = pVictim;
         pVictim.Capture(this);
+    }
+
+    public void SetStrategy(BubbleStrategyBase pStrategy)
+    {
+        _strategy = pStrategy;
     }
 
     private void FixedUpdate()
     {
-        if (_hasVictim)
-        {
-            transform.position += Vector3.up * _floatSpeed;
-        }
+        _strategy.OnUpdate();
     }
 }
