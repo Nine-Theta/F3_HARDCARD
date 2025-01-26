@@ -23,11 +23,11 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 _moveInput = Vector2.zero;
     private Vector2 _lookInput = Vector2.zero;
-    private bool _isMouseLocked = false;
+    private bool _isMouseLocked = true;
 
     private void Start()
     {
-
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void OnMove(InputAction.CallbackContext pContext)
