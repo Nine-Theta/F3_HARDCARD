@@ -156,4 +156,7 @@ MonoBehaviour:
   MoveSpeed: 0.035
   <CapturedVictim>k__BackingField: {fileID: 0}
   <HasVictim>k__BackingField: 0
-  _strategy: {fileID: 11400000, guid: 517ca86ae5199ae4ab234892775ebd9e, type: 2}
+  _allStrategies:
+  - {fileID: 11400000, guid: fb408c1ea8e175b4897db6f2fa073c6f, type: 2}
+  - {fileID: 11400000, guid: 517ca86ae5199ae4ab234892775ebd9e, type: 2}
+  - {fileID: 11400000, guid: 5c370b1aa5885e24c9138f9d502974c3, type: 2}
