@@ -9,17 +9,17 @@ public class SpiralBubbleBehaviour : BubbleStrategyBase
     private Vector3 fixedPoint = Vector3.zero;
     private int currentSwing = 0;
     private float currentAngle = 0;
-    public override void OnUpdate()
+    public override void OnUpdate(BubbleBehaviour pBehaviour)
     {
-        if(Bubble != null && Bubble.HasVictim)
+        if(pBehaviour != null && pBehaviour.HasVictim)
         {
-            fixedPoint = Bubble.CapturedVictim.transform.position;
+            fixedPoint = pBehaviour.CapturedVictim.transform.position;
 
             currentAngle = angle * Time.time;
 
             Vector3 offsetMovement = new Vector3(Mathf.Sin(currentAngle), 1, Mathf.Cos(currentAngle)) * maxRadius;
 
-            Bubble.transform.position += offsetMovement * Bubble.MoveSpeed;
+            pBehaviour.transform.position += offsetMovement * pBehaviour.MoveSpeed;
         }
     }
 }

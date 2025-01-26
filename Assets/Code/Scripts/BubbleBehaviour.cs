@@ -24,7 +24,7 @@ public class BubbleBehaviour : MonoBehaviour
     public void Pop()
     {
         CapturedVictim.Release();
-        _strategy.OnPop();
+        _strategy.OnPop(this);
     }
 
     public void Capture(VictimBehaviour pVictim)
@@ -41,6 +41,6 @@ public class BubbleBehaviour : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _strategy.OnUpdate();
+        _strategy.OnUpdate(this);
     }
 }

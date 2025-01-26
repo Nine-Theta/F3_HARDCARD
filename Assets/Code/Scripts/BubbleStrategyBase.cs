@@ -2,17 +2,16 @@ using UnityEngine;
 
 public abstract class BubbleStrategyBase : ScriptableObject
 {
-    protected BubbleBehaviour Bubble;
 
     public virtual void OnStart(BubbleBehaviour pBehaviour)
     {
-        Bubble = pBehaviour;
+
     }
 
-    public abstract void OnUpdate();
+    public abstract void OnUpdate(BubbleBehaviour pBehaviour);
 
-    public virtual void OnPop()
+    public virtual void OnPop(BubbleBehaviour pBehaviour)
     {
-        Destroy(Bubble.gameObject);
+        Destroy(pBehaviour.gameObject);
     }
 }

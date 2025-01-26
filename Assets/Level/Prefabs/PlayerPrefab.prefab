@@ -394,7 +394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _walkSpeedMult: 120
   _lookMult: {x: 0.25, y: -0.1}
-  _maxLookAngle: 72
+  _maxLookAngle: 70
   _playerCam: {fileID: 5764951100289711833}
   _playerBody: {fileID: 4673413980208512100}
   _gun: {fileID: 6327645897392748922}
