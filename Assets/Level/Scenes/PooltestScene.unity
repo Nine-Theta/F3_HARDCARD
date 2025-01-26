@@ -835,6 +835,9 @@ MonoBehaviour:
   Bubble: {fileID: 5499071652020390812, guid: 8532ca56516da4a4cbb87d959b336380, type: 3}
   PoolGuestCount: 30
   PoolGuestSpacing: 0.5
+  KidnapAmount: 20
+  minKidnapTimer: 2
+  maxKidnapTimer: 7
 --- !u!4 &914710109
 Transform:
   m_ObjectHideFlags: 0
