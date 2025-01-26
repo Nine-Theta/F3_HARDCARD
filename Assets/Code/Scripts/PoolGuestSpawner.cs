@@ -23,7 +23,7 @@ public class PoolGuestSpawner : MonoBehaviour
 
             while (!validSpawnLocation)
             {
-                spawnLocation = new Vector3(Random.Range(TopLeft.position.x, TopRight.position.x), 0, Random.Range(TopLeft.position.z, BottomRight.position.z));
+                spawnLocation = new Vector3(Random.Range(TopLeft.position.x, TopRight.position.x), 1, Random.Range(TopLeft.position.z, BottomRight.position.z));
 
                 validSpawnLocation = true;
                 foreach (Vector3 poolSpawnLocation in GuestsInPoolLocation)

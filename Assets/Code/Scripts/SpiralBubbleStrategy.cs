@@ -11,7 +11,7 @@ public class SpiralBubbleBehaviour : BubbleStrategyBase
     private float currentAngle = 0;
     public override void OnUpdate()
     {
-        if(Bubble.HasVictim)
+        if(Bubble != null && Bubble.HasVictim)
         {
             fixedPoint = Bubble.CapturedVictim.transform.position;
 

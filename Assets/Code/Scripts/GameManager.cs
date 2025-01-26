@@ -9,8 +9,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject Bubble;
     [SerializeField] private int PoolGuestCount;
     [SerializeField] private float PoolGuestSpacing = 0;
+    [SerializeField] private float KidnapAmount = 0;
+    [SerializeField] private float minKidnapTimer = 2f;
+    [SerializeField] private float maxKidnapTimer = 7f;
     private PoolGuestSpawner poolGuestSpawner;
     private List<GameObject> GuestsInPool = new List<GameObject>();
+    private List<GameObject> KidnappedGuests = new List<GameObject>();
+    private bool waiting = false;
+    private int currentKidnappedAmount = 0;
     #endregion
 
     #region Singleton
@@ -37,27 +43,37 @@ public class GameManager : MonoBehaviour
         yield return 1f;
         poolGuestSpawner = GetComponent<PoolGuestSpawner>();
         GuestsInPool = poolGuestSpawner.SpawnGuests(PoolGuests, PoolGuestCount, PoolGuestSpacing);
+
+        if(KidnapAmount > PoolGuestCount)
+        {
+            KidnapAmount = PoolGuestCount;
+        }
     }
 
     private void Update()
     {
-        StartCoroutine(KidnapGuest());
+        if(!waiting)
+        {
+            waiting = true;
+            StartCoroutine(KidnapGuest());
+        }
     }
 
     private IEnumerator KidnapGuest()
     {
-        yield return Random.Range(5, 20);
+        if(currentKidnappedAmount < KidnapAmount)
+        { 
+            yield return new WaitForSeconds(Random.Range(minKidnapTimer, maxKidnapTimer));
 
-        // get random guest
-        int randomIndex = Random.Range(0, GuestsInPool.Count);
-
-        // Guest becomes bubbles (get component)
-        // GameObject bubble = Instantiate(Bubble, GuestsInPool[randomIndex].transform.position, Quarternion.identity);
-        // bubble.Capture(GuestsInPool[randomIndex]);
-        //TODO: bubble -> trigger random bubble effect
-
-        //Remove person from list while theyre floating
-        //  GuestsInPool[randomIndex].remove();
+            // get random guest
+            int randomIndex = Random.Range(0, GuestsInPool.Count);
+            GameObject newBubble = Instantiate(Bubble, GuestsInPool[randomIndex].transform.position, Quaternion.identity);
+            newBubble.GetComponent<BubbleBehaviour>().Capture(GuestsInPool[randomIndex].GetComponent<VictimBehaviour>());
+            KidnappedGuests.Add(GuestsInPool[randomIndex]);
+            GuestsInPool.RemoveAt(randomIndex);
+            waiting = false;
+            currentKidnappedAmount++;
+        }
     }
     #endregion
 }

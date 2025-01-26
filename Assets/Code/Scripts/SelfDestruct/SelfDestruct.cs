@@ -7,7 +7,7 @@ public class SelfDestruct : MonoBehaviour
 
     public IEnumerator Countdown()
     {
-        Debug.Log("Countdown started");
+        //Debug.Log("Countdown started");
         yield return new WaitForSeconds(timeToSelfDestruct);
         Destroy(gameObject);
     }
