@@ -1,2 +1,13 @@
 fileFormatVersion: 2
 guid: c91befb3cd8c728459834eca41dbdac0
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - <CapturedVictim>k__BackingField: {instanceID: 0}
+  - _strategy: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
