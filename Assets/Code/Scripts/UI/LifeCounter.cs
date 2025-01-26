@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class LifeCounter : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class LifeCounter : MonoBehaviour
     public void UpdateCounter()
     {
         numberOfLifes--;
+        if(numberOfLifes <= 0)
+        {
+            SceneManager.LoadScene(3);
+        }    
         textBox.text = numberOfLifes.ToString();
     }
 }

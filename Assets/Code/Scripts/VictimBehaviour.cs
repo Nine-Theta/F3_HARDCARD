@@ -78,6 +78,7 @@ public class VictimBehaviour : MonoBehaviour
         this.transform.position = initialPos;
         _body.isKinematic = true;
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.transform.tag.Equals(Tags.T_Ground))
