@@ -58,7 +58,7 @@ Material:
     - _Strenght_Color2: 0.5
     - _Strenght_of_color1: 3
     m_Colors:
-    - _Color1: {r: 0, g: 0.8202615, b: 1, a: 0}
+    - _Color1: {r: 0, g: 0.81960773, b: 1, a: 0}
     - _Color2: {r: 0.9818129, g: 1, b: 0.11792451, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
