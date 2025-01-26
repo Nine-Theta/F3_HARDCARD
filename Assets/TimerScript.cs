@@ -4,6 +4,8 @@ using TMPro;
 using Rive;
 using Rive.Components;
 using UnityEditorInternal;
+using UnityEngine.SceneManagement;
+using UnityEditor;
 
 public class Timer : MonoBehaviour
 {
@@ -82,6 +84,12 @@ public class Timer : MonoBehaviour
         someNumber.Value = 3;
 
         timerText.color = new UnityEngine.Color(0, 1, 0);
+        ChangeScene(2);
+    }
+
+    public void ChangeScene(int buildIndex)
+    {
+        SceneManager.LoadScene(buildIndex);
     }
 
     // Optional: Method to reset the timer
