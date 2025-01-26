@@ -1,4 +1,5 @@
 using NaughtyAttributes;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BubbleBehaviour : MonoBehaviour
@@ -12,11 +13,18 @@ public class BubbleBehaviour : MonoBehaviour
     [field: SerializeField]
     public bool HasVictim { get; private set; }
 
-    [SerializeField]
     private BubbleStrategyBase _strategy;
+
+    [SerializeField]
+    private List<BubbleStrategyBase> _allStrategies;
 
     private void Start()
     {
+        if(_strategy == null)
+        {
+            int chosenStrategy = Random.Range(0, _allStrategies.Count);
+            _strategy = _allStrategies[chosenStrategy];
+        }
         _strategy.OnStart(this);
     }
 
