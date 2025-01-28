@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Level/Menus/MainMenu.unity
     guid: 69959b9981219974cac9dbd223425c92
   - enabled: 1
+    path: Assets/Level/Scenes/MartiTestingScene.unity
+    guid: ddaf9984fdfd60244b74a23915a6f843
+  - enabled: 1
     path: Assets/Level/Menus/EndScreen.unity
     guid: 5d6a28e6bca8e9a45ba03d7773177ae0
   m_configObjects:

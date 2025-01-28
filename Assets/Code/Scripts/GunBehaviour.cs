@@ -20,15 +20,24 @@ public class GunBehaviour : MonoBehaviour
     private BulletBehaviour _bullet;
 
     [SerializeField]
+    private bool _canShoot = false;
+
+    [SerializeField]
     private Transform _bulletSpawnpoint;
 
     [SerializeField]
     private GameObject _gunVisual;
 
+    [SerializeField]
+    private Animator _gunAnimator;
+
     public void FireGun()
     {
-        if (_isHolstered)
+        if (_isHolstered || _gunAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1)
             return;
+
+        _gunAnimator.Play("Gun Shooting");
+
 
         Ray ray = _playerCam.ViewportPointToRay(new Vector3(.5f, .5f, 0));
         Debug.DrawRay(_playerCam.transform.position, ray.direction * _maxShootingRange, Color.red, 2f);

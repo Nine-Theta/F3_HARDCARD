@@ -7,15 +7,15 @@ public class FloatyZigZagBubbleStrategy : BubbleStrategyBase
     private Vector3 movement = Vector3.zero;
     private int currentSwing = 0;
     
-    public override void OnUpdate()
+    public override void OnUpdate(BubbleBehaviour pBehaviour)
     {
-        if(Bubble != null && Bubble.HasVictim)
+        if(pBehaviour != null && pBehaviour.HasVictim)
         {
             float swingValue = Mathf.Sin(Time.time) * maxSwing;
 
             movement = new Vector3(0, 1, swingValue);
 
-            Bubble.transform.position += movement * Bubble.MoveSpeed;
+            pBehaviour.transform.position += movement * pBehaviour.MoveSpeed;
         }
     }
 }
