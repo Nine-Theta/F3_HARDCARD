@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using TMPro;
 using Rive;
 using Rive.Components;
-using UnityEditorInternal;
 using UnityEngine.SceneManagement;
 using UnityEditor;
 
@@ -90,6 +89,7 @@ public class Timer : MonoBehaviour
     public void ChangeScene(int buildIndex)
     {
         SceneManager.LoadScene(buildIndex);
+        Cursor.lockState = CursorLockMode.None;
     }
 
     // Optional: Method to reset the timer
